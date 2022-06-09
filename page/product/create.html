@@ -197,22 +197,21 @@
               </p>
             </a>                    
           <li class="nav-item">
-            <a href="http://127.0.0.1:5500/page/product/list.html" class="nav-link">
-              <i class="nav-icon fas fa-detail-book"></i>
-              <p>
-                Product
+            <a href="http://127.0.0.1:5500/page/student/list.html" class="nav-link">
+              <i class="nav-icon fas fa-address-book"></i>
+              <p>Student
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="http://127.0.0.1:5500/page/product/list.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/page/student/list.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://127.0.0.1:5500/page/product/create.html" class="nav-link">
+                <a href="http://127.0.0.1:5500/page/student/create.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
@@ -235,7 +234,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="http://127.0.0.1:5500/page/product/create.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
@@ -283,45 +282,36 @@
               <!-- form start -->
               <form name="create-product">
                 <div class="card-body">
-                  <div class="form-group col-md-2">
-                    <label for="id">Id</label>
-                    <input type="text" class="form-control" id="id" name="id" placeholder="Enter id" required>
-                  </div>
                   <div class="form-group col-md-5">
                     <label for="productName">Name</label>
                     <input type="text" class="form-control" id="productName"  name="productName" placeholder="Enter name" required>
                   </div>
                   <div class="form-group col-md-3">
-                    <label for="slug">Slug</label>
+                    <label for="slug">slug</label>
                     <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug" required>
                   </div>
-                  <div class="form-group col-md-3">
-                    <label for="image">Image</label>
-                    <input type="text" class="form-control" id="image" name="image" placeholder="Enter image" required>
-                  </div>
                   <div class="form-group col-md-6">
-                    <label for="description">Description</label>
-                    <input type="description" class="form-control" id="description" name="description" placeholder="Enter description" required>
+                    <label for="description">description</label>
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" required>
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="detail">Detail</label>
+                    <label for="image">image</label>
+                    <input type="text" class="form-control" id="image" name="image" placeholder="Enter image" required>
+                  </div>
+                  <div class="form-group col-md-10">
+                    <label for="detail">detail</label>
                     <input type="text" class="form-control" id="detail" name="detail" placeholder="Enter detail" required>
                   </div>
                   <div class="form-group col-md-10">
-                    <label for="brand">Brand</label>
+                    <label for="brand">brand</label>
                     <input type="text" class="form-control" id="brand" name="brand" placeholder="Enter brand" required>
                   </div>
-                  <div class="form-group col-md-5">
-                    <label for="userCre">UserCre</label>
-                    <input type="text" class="form-control" id="userCre" name="userCre" placeholder="Enter userCre" required>
-                  </div>
-                  <div class="form-group col-md-5">
-                    <label for="userUp">UserUp</label>
-                    <input type="text" class="form-control" id="userUp" name="userUp" placeholder="Enter userUp" required>
-                  </div>
-                  <div class="form-group col-md-5">
-                    <label for="userDel">UserDel</label>
-                    <input type="text" class="form-control" id="userDel" name="userDel" placeholder="Enter userDel" required>
+                  <div class="form-group col-md-4">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status" name="status">
+                      <option value="1">Active</option>
+                      <option value="-1">Deactive</option>
+                    </select>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -368,62 +358,53 @@
 <script src="../../content/dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
-    $(function () {
-    bsCustomFileInput.init();
-    });
+  $(function () {
+  bsCustomFileInput.init();
+  });
 
-    document.addEventListener("DOMContentLoaded",function(){
-        var btnSubmit = document.forms['create-product']['btn-submit'];
-        var txtId = document.forms['create-product']['id'];
-        var txtproductName = document.forms['create-product']['productName'];
-        var txtSlug = document.forms['create-product']['slug'];
-        var txtImage = document.forms['create-product']['image'];
-        var txtDescription = document.forms['create-product']['description'];
-        var txtDetail = document.forms['create-product']['detail'];
-        var txtBrand = document.forms['create-product']['brand'];
-        var txtUserCre = document.forms['create-product']['userCre'];
-        var txtUserUp = document.forms['create-product']['userUp'];
-        var txtUserDel = document.forms['create-product']['userDel'];
+  document.addEventListener("DOMContentLoaded",function(){
+      var btnSubmit = document.forms['create-product']['btn-submit'];
+      var txtProductName = document.forms['create-product']['productName'];
+      var txtSlug = document.forms['create-product']['slug'];
+      var txtDescription = document.forms['create-product']['description'];
+      var txtDetail = document.forms['create-product']['detail'];
+      var txtImage = document.forms['create-product']['image'];
+      var txtBrand = document.forms['create-product']['brand'];
+      var selectStatus = document.forms['create-product']['status'];
 
-        if(btnSubmit){
-            btnSubmit.onclick = function(event){
-                event.preventDefault();
-                var id = txtId.value;
-                var productName = txtProductName.value;
-                var slug = txtSlug.value;
-                var description = txtDescription.value;
-                var detail = txtDetail.value;
-                var image = txtImage.value;
-                var brand= txtBrand.value;
-                var userCre = txtUserCre.value;
-                var userUp = txtUserUp.value;
-                var userDel = txtUserDel.value;
-                var obj = {
-                    'id' : id,
-                    'productName' : productName,
-                    'slug' : slug,
-                    'description' : description,
-                    'detail' : detail,
-                    'brand' : brand,
-                    'image' : image,
-                    'UserCre' : UserCre,
-                    'UserUp' : UserUp,
-                    'UserDel' : UserDel,
-                }        
-                var dataToSend = JSON.stringify(obj)
-                    var xmlHttpRequest = new XMLHttpRequest();
-                    xmlHttpRequest.onreadystatechange= function(){
-                        if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
-                            //du lieu dc tra ve thanh cong
-                            alert('Create new Success !')
-                        }
-                    }
-                    xmlHttpRequest.open('POST','https://t2010a-hello-springboot.herokuapp.com/api/v1/products',false)
-                    xmlHttpRequest.setRequestHeader('Content-Type','application/json');
-                    xmlHttpRequest.send(dataToSend);
-            }
-        }
-    });
+      if(btnSubmit){
+          btnSubmit.onclick = function(event){
+              event.preventDefault();
+              var productName = txtProductName.value;
+              var slug = txtSlug.value;
+              var description = txtDescription.value;
+              var detail = txtDetail.value;
+              var image= txtImage.value;
+              var brand= txtBrand.value;
+              var status = selectStatus.value;
+              var obj = {
+                  'productName' : productName,
+                  'slug' : slug,
+                  'description' : description,
+                  'detail' : detail,
+                  'image' : image,
+                  'brand' : brand,
+                  'status' : status
+              }        
+              var dataToSend = JSON.stringify(obj)
+                  var xmlHttpRequest = new XMLHttpRequest();
+                  xmlHttpRequest.onreadystatechange= function(){
+                      if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
+                          //du lieu dc tra ve thanh cong
+                          alert('Create new Success !')
+                      }
+                  }
+                  xmlHttpRequest.open('POST','https://products-springboot.herokuapp.com/api/v1/products',false)
+                  xmlHttpRequest.setRequestHeader('Content-Type','application/json');
+                  xmlHttpRequest.send(dataToSend);
+          }
+      }
+  });
 </script>
 </body>
 </html>

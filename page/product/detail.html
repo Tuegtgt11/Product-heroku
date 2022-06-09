@@ -304,32 +304,42 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../content/dist/js/demo.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded",function(){
-    var xmlHttpRequest = new XMLHttpRequest();
-    xmlHttpRequest.onreadystatechange=function(){
-      if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
-        var contentText = '';
-        var jsonResult = JSON.parse(xmlHttpRequest.responseText);
-        contentText = `<div class="col-md-3">
+  document.addEventListener('DOMContentLoaded', function (){
+        loadData();
+    })
+    function getParametterUrl(parameterName){
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        return url.searchParams.get(parameterName);
+    }
+    function loadData(){
+        var id = getParametterUrl('id');
+        var xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.onreadystatechange = function(){
+            if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
+                    //du lieu dc tra ve thanh cong
+                    var contentText = '';
+                    var element = JSON.parse(xmlHttpRequest.responseText);
+                    contentText +=`<div class="col-md-3">
                         <!-- Profile Image -->
                         <div class="card card-primary card-outline">
                           <div class="card-body box-profile">
                             <div class="text-center">
                               <img class="profile-user-img img-fluid img-circle"
-                                  src="../../content/dist/img/user4-128x128.jpg"
-                                  alt="User profile picture">
+                                  src="${element.image}"
+                                  >
                             </div>
 
-                            <h3 class="profile-username text-center">${jsonResult.fullName}</h3>
+                            <h3 class="profile-username text-center">${element.productName}</h3>
 
-                            <p class="text-muted text-center">Software Engineer</p>
+                            <p class="text-muted text-center">Software Enginelementeer</p>
 
                             <ul class="list-group list-group-unbordered mb-3">
                               <li class="list-group-item">
-                                <b>Create At</b> <a class="float-right">${jsonResult.createdAt}</a>
+                                <b>CreatedAt</b> <a class="float-right">${element.createdAt}</a>
                               </li>
                               <li class="list-group-item">
-                                <b>Update At</b> <a class="float-right">${jsonResult.updatedAt}</a>
+                                <b>UpdatedAt</b> <a class="float-right">${element.updatedAt}</a>
                               </li>                          
                             </ul>
 
@@ -348,49 +358,65 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                              <strong><i class="fas fa-book mr-1"></i> Email</strong>
+                              <strong><i class="far fa-file-alt mr-1"></i></i>Detail</strong>
               
                               <p class="text-muted">
-                                ${jsonResult.email}
+                                ${element.detail}
                               </p>
               
                               <hr>
               
-                              <strong><i class="fas fa-map-marker-alt mr-1"></i> Phone</strong>
+                              <strong><i class="far fa-file-alt mr-1"></i> Brand</strong>
               
-                              <p class="text-muted">${jsonResult.phone}</p>
+                              <p class="text-muted">${element.brand}</p>
               
                               <hr>
               
-                              <strong><i class="fas fa-pencil-alt mr-1"></i> Address</strong>
+                              <strong><i class="far fa-file-alt mr-1"></i> Status</strong>
               
-                              <p class="text-muted">${jsonResult.address}</p>
+                              <p class="text-muted">${element.status}</p>
 
                               <hr>
-                              <strong><i class="fas  fa-birthday-cake mr-1"></i> Date of Birthday</strong>
               
-                              <p class="text-muted">${jsonResult.dob}</p>
+                              <strong><i class="far fa-file-alt mr-1"></i> Slug</strong>
               
+                              <p class="text-muted">${element.slug}</p>
                               <hr>
               
-                              <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                              <strong><i class="far fa-file-alt mr-1"></i> Description</strong>
               
-                              <p class="text-muted">${jsonResult.note}</p>
+                              <p class="text-muted">${element.description}</p>
+                            
                             </div>
                             <!-- /.card-body -->
                           </div>
                           <!-- /.card -->
                       </div>
                       <!-- /.col -->`
-        var detailStudent = document.getElementById('product-detail');
-        if(detailStudent != undefined){
-          detailStudent.innerHTML = contentText;
+        var detailProduct = document.getElementById('product-detail');
+        if(detailProduct != undefined){
+          detailProduct.innerHTML = contentText;
         }
     }
   }
-  xmlHttpRequest.open('GET','https://t2010a-hello-springboot.herokuapp.com/api/v1/students/a001',false)
+  xmlHttpRequest.open('GET',`https://products-springboot.herokuapp.com/api/v1/products/${id}`, false)
   xmlHttpRequest.send();
-})
+}
+$(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
 </script>
 </body>
 </html>

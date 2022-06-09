@@ -3,16 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>AdminLTE 3 | General Form Elements</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../content/plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../content/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../content/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../content/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../content/dist/css/adminlte.min.css">
 </head>
@@ -203,8 +199,7 @@
           <li class="nav-item">
             <a href="http://127.0.0.1:5500/page/student/list.html" class="nav-link">
               <i class="nav-icon fas fa-address-book"></i>
-              <p>
-                Student
+              <p>Student
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -260,65 +255,78 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h1>General Form</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
+              <li class="breadcrumb-item active">General Form</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
-    <a href=""></a>
 
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            <!-- /.card -->
-            <div class="card">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">List Product</h3>
+                <h3 class="card-title">Quick Example</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>ProductName</th>                
-                    <th>Description</th>
-                    <th>Slug</th>
-                    <th>Brand</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody id="list-product">
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>ProductName</th>                
-                    <th>Description</th>
-                    <th>Slug</th>
-                    <th>Brand</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+              <!-- form start -->
+              <form name="create-product">
+                <div class="card-body">
+                  <div class="form-group col-md-5">
+                    <label for="productName">Name</label>
+                    <input type="text" class="form-control" id="productName"  name="productName" placeholder="Enter name" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="slug">slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="description">description</label>
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="image">image</label>
+                    <input type="text" class="form-control" id="image" name="image" placeholder="Enter image" required>
+                  </div>
+                  <div class="form-group col-md-10">
+                    <label for="detail">detail</label>
+                    <input type="text" class="form-control" id="detail" name="detail" placeholder="Enter detail" required>
+                  </div>
+                  <div class="form-group col-md-10">
+                    <label for="brand">brand</label>
+                    <input type="text" class="form-control" id="brand" name="brand" placeholder="Enter brand" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status" name="status">
+                      <option value="1">Active</option>
+                      <option value="-1">Deactive</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <input type="submit" class="btn btn-primary" name="btn-submit" value="Submit"/>
+                  <button type="reset" class="btn btn-default">Reset</button>
+                </div>
+              </form>
             </div>
             <!-- /.card -->
           </div>
-          <!-- /.col -->
-        </div>
+          <!--/.col (left) -->
         <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
@@ -342,103 +350,82 @@
 <script src="../../content/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="../../content/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../content/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../content/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../content/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../content/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../content/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../../content/plugins/jszip/jszip.min.js"></script>
-<script src="../../content/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../../content/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../../content/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../../content/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../../content/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../../content/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../content/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../content/dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
-  
-//chờ page load hết mớ bắt đầu thực thi javascrip
-document.addEventListener('DOMContentLoaded',function(){
-            loadData();
-            handleDeleteClick();
-        })
-        function handleDeleteClick(){
-            var listBtnDelete = document.querySelectorAll('.btn-delete')
-            for(let i = 0; i<listBtnDelete.length; i++){
-                const element = listBtnDelete[i];
-                element.onclick = function(e){
-                    e.preventDefault();
-                    if(confirm('Are you sure')){
-                        var id = this.getAttribute('data-id')
-                        handleDeleteById(id)
-                    }
-                }
-            }
-        }
-        function handleDeleteById(id){
-            var xmlHttpRequest = new xmlHttpRequest();
-            xmlHttpRequest.onreadystatechange=function(){
-                if(xmlHttpRequest.readyState==4 && xmlHttpRequest.status == 200){
-                    alert('Acction success')
-                    window.location.reload();
-                }
-            
-            }
-            xmlHttpRequest.open('DELETE', `https://products-springboot.herokuapp.com/api/v1/products/${id}`,false)
-            xmlHttpRequest.send();
-        }
-        function loadData(){
-            var xmlHttpRequest = new XMLHttpRequest();
-            xmlHttpRequest.onreadystatechange= function(){
-                if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
-                    //du lieu dc tra ve thanh cong
-                    var contentText = '';
-                    var jsonResult = JSON.parse(xmlHttpRequest.responseText);
-                    for (let i = 0; i < jsonResult.length; i++) {
-                        const element = jsonResult[i];
-                        contentText += 
-                        `<tr>
-                            <td>${element.productName}</td>
-                            <td>${element.description}</td>
-                            <td>${element.slug}</td>
-                            <td>${element.brand}</td>
-                            <td><img src="${element.image}" width="100px" height="100px"/ target="_blank"></td>                       
-                            <td>
-                                <a href="http://127.0.0.1:5500/page/product/detail.html?id=${element.id}" class="fas fa-clipboard-list" id="to-detail"></a>
-                                <a href="http://127.0.0.1:5500/page/product/edit.html?id=${element.id}" class="fas fa-pencil-alt mr-1"></a>
-                                <a data-id="${element.id}" href="http://127.0.0.1:5500/page/product/delete.html" class="fas fa-trash" class=".btn-delete"></a>
-                            </td>
-                         </tr>`;      
-                    }
-                    var listProduct = document.getElementById('list-product');
-                    if(listProduct !== undefined){
-                        listProduct.innerHTML = contentText;
-                    }
-                }
-            }
-            xmlHttpRequest.open('GET', 'https://products-springboot.herokuapp.com/api/v1/products',false)
-            xmlHttpRequest.send();
-        }
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+    function getParametterUrl(parameterName){
+     var url_string = window.location.href
+     var url = new URL(url_string);
+     return url.searchParams.get(parameterName);
+ }
+     //chờ page load hết mớ bắt đầu thực thi javascrip
+     document.addEventListener('DOMContentLoaded',function(){
+         var btnSumit = document.forms['create-product']['btn-submit'];
+         var txtProName = document.forms['create-product']['productName'];
+         var txtSlug = document.forms['create-product']['slug'];
+         var txtDes = document.forms['create-product']['description'];
+         var txtDel = document.forms['create-product']['detail'];
+         var txtImg = document.forms['create-product']['image'];
+         var txtBrand = document.forms['create-product']['brand'];
+         var selectStatus = document.forms['create-product']['status'];
+         //load data by id
+         var id = getParametterUrl('id');
+     var xmlHttpRequest = new XMLHttpRequest();
+     xmlHttpRequest.onreadystatechange = function(){
+         if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
+                 //du lieu dc tra ve thanh cong
+             var contentText = '';
+             var element = JSON.parse(xmlHttpRequest.responseText);
+             txtProName.value = element.productName;
+             txtSlug.value = element.slug;
+             txtDes.value = element.description;
+             txtDel.value = element.detail;
+             txtImg.value = element.image;
+             txtBrand.value = element.brand;
+             selectStatus.value = element.status;
+             }
+         }
+         xmlHttpRequest.open('GET', `https://products-springboot.herokuapp.com/api/v1/products/${id}`,false);
+         xmlHttpRequest.send();
+         if(btnSumit){
+             btnSumit.onclick = function(event){
+                 event.preventDefault();
+                 var name = txtProName.value;
+                 var slug = txtSlug.value;
+                 var description = txtDes.value;
+                 var detail = txtDel.value;
+                 var image = txtImg.value;
+                 var brand = txtBrand.value;
+                 var status = selectStatus.value;
+                 var obj ={
+                     "productName" : name,
+                     "slug" : slug,
+                     "description" : description,
+                     "detail" : detail,
+                     "image" : image,
+                     "brand" : brand,
+                     "status" : status     
+
+                 }
+                 var dataToSend = JSON.stringify(obj);
+                 var xmlHttpRequest = new XMLHttpRequest();
+                 xmlHttpRequest.onreadystatechange = function(){
+         if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200){
+                 alert('Action complete');
+                 window.location.href=`http://127.0.0.1:5500/page/product/list.html`;
+             }
+         }
+                 xmlHttpRequest.open('PUT', `https://products-springboot.herokuapp.com/api/v1/products/${id}`,false)
+                 xmlHttpRequest.setRequestHeader('Content-Type','application/json');
+                 xmlHttpRequest.send(dataToSend);
+                     }
+                 }    
+     })
+ </script>
 </body>
 </html>
